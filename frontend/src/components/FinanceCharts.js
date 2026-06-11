@@ -12,6 +12,11 @@ import {
 
 function FinanceCharts({ transactions }) {
 
+    const COLORS = [
+        "#10B981",
+        "#EF4444"
+    ];
+
     const income = transactions
         .filter(t => t.type === "income")
         .reduce((sum, t) => sum + Number(t.amount), 0);
@@ -47,7 +52,7 @@ function FinanceCharts({ transactions }) {
     }));
 
     return (
-        <div>
+        <div className="card">
             <h2>Finance Charts</h2>
 
             <h3>Income vs Expenses</h3>
@@ -59,8 +64,12 @@ function FinanceCharts({ transactions }) {
                     outerRadius={100}
                     label
                 >
-                    <Cell />
-                    <Cell />
+                    {pieData.map((entry, index) => (
+                        <Cell
+                          key={index}
+                          fill={COLORS[index]}
+                        />
+                    ))}
                 </Pie>
 
                 <Tooltip />
@@ -81,7 +90,10 @@ function FinanceCharts({ transactions }) {
 
                 <Tooltip />
 
-                <Bar dataKey="amount" />
+                <Bar
+                  dataKey="amount"
+                  fill="#8B5CF6"
+                />
             </BarChart>
         </div>
     );

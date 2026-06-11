@@ -24,15 +24,16 @@ function TransactionList({ transactions, onDelete, onEdit }) {
 
                             <td>
                                 <button
+                                  className="edit-btn"
                                   onClick={() => onEdit(transaction)}
                                 >
                                   Edit
                                 </button>
 
                                 <button
+                                  className="delete-btn"
                                   onClick={() =>
-                                    onDelete(transaction.id)
-                                  }
+                                    onDelete(transaction.id)}
                                 >
                                   Delete
                                 </button>

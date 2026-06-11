@@ -108,7 +108,10 @@ function TransactionForm() {
 
                 <br /><br />
 
-                <button type="submit">
+                <button 
+                    type="submit"
+                    className="add-btn"
+                >
                     Add Transaction
                 </button>
             </form>
