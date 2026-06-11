@@ -4,11 +4,14 @@ const cors = require("cors");
 const db = require("./config/db");
 const authRoutes = require("./routes/auth");
 
+const transactionRoutes = require("./routes/transactions");
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
+app.use("/api/transactions", transactionRoutes);
 
 app.get("/", (req, res) => {
     res.send("FinanceTrack Backend Running");

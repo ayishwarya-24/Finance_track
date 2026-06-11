@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -30,7 +32,10 @@ function Login() {
 
             const data = await response.json();
 
-            alert(data.message);
+            localStorage.setItem("userId", data.userId);
+            localStorage.setItem("username", data.username);
+            navigate("/dashboard");
+            
         } catch (error) {
             console.error(error);
         }

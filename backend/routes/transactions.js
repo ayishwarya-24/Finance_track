@@ -1,0 +1,49 @@
+const express = require("express");
+
+const router = express.Router();
+
+const db = require("../config/db");
+
+router.post("/", (req, res) => {
+    const {
+        userId,
+        amount,
+        type,
+        category,
+        description,
+        transaction_date
+    } = req.body;
+
+    const sql = `
+        INSERT INTO transactions
+        (user_id, amount, type, category, description, transaction_date)
+        VALUES (?, ?, ?, ?, ?, ?)
+    `;
+
+    db.query(
+        sql,
+        [
+            userId,
+            amount,
+            type,
+            category,
+            description,
+            transaction_date
+        ],
+        (err, result) => {
+            if (err) {
+                console.error(err);
+
+                return res.status(500).json({
+                    message: "Failed to add transaction"
+                });
+            }
+
+            res.status(201).json({
+                message: "Transaction added"
+            });
+        }
+    );
+});
+
+module.exports = router;
