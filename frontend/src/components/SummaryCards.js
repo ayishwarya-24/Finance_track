@@ -10,14 +10,24 @@ function SummaryCards({ transactions }) {
     const balance = income - expenses;
 
     return (
-        <div>
-            <h2>Summary</h2>
+        <div className="card-container">
+            <div className="card">
+                <h3>Total Income</h3>
+                <h2 className="income">{income}</h2>
+            </div>
 
-            <p>Total Income: {income}</p>
-            <p>Total Expenses: {expenses}</p>
-            <p>Balance: {balance}</p>
+            <div className="card">
+                <h3>Total Expenses</h3>
+                <h2 className="expense">{expenses}</h2>
+            </div>
+
+            <div className="card">
+                <h3>Balance</h3>
+                <h2 className="balance">{balance}</h2>
+            </div>
         </div>
     );
+      
 }
 
 export default SummaryCards;

@@ -70,5 +70,67 @@ router.get("/:userId", (req, res) => {
     });
 });
 
+router.delete("/:id", (req, res) => {
+    const { id } = req.params;
 
+    const sql = "DELETE FROM transactions WHERE id = ?";
+
+    db.query(sql, [id], (err, result) => {
+        if (err) {
+            console.error(err);
+
+            return res.status(500).json({
+                message: "Failed to delete transaction"
+            });
+        }
+
+        res.json({
+            message: "Transaction deleted"
+        });
+    });
+});
+
+router.put("/:id", (req, res) => {
+    const { id } = req.params;
+
+    const {
+        amount,
+        category,
+        description,
+        transaction_date
+    } = req.body;
+
+    const sql = `
+        UPDATE transactions
+        SET amount = ?,
+            category = ?,
+            description = ?,
+            transaction_date = ?
+        WHERE id = ?
+    `;
+
+    db.query(
+        sql,
+        [
+            amount,
+            category,
+            description,
+            transaction_date,
+            id
+        ],
+        (err, result) => {
+            if (err) {
+                console.error(err);
+
+                return res.status(500).json({
+                    message: "Failed to update transaction"
+                });
+            }
+
+            res.json({
+                message: "Transaction updated"
+            });
+        }
+    );
+});
 module.exports = router;
