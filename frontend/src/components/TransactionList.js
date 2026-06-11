@@ -1,30 +1,4 @@
-import { useEffect, useState } from "react";
-
-function TransactionList() {
-    const [transactions, setTransactions] = useState([]);
-
-    useEffect(() => {
-        const fetchTransactions = async () => {
-            const userId = localStorage.getItem("userId");
-
-            try {
-                const response = await fetch(
-                    `http://localhost:5000/api/transactions/${userId}`
-                );
-
-                const data = await response.json();
-
-                setTransactions(data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchTransactions();
-    }, []);
-
-    console.log(transactions);
-
+function TransactionList({ transactions }) {
     return (
         <div>
             <h2>Your Transactions</h2>
