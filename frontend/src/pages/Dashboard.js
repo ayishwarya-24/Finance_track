@@ -1,4 +1,5 @@
 import TransactionForm from "../components/TransactionForm";
+import TransactionList from "../components/TransactionList";
 
 function Dashboard() {
     const username = localStorage.getItem("username");
@@ -10,6 +11,10 @@ function Dashboard() {
             <h2>Welcome, {username}</h2>
 
             <TransactionForm />
+
+            <hr />
+
+            <TransactionList />
         </div>
     );
 }

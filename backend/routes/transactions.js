@@ -46,4 +46,29 @@ router.post("/", (req, res) => {
     );
 });
 
+
+router.get("/:userId", (req, res) => {
+    const { userId } = req.params;
+
+    const sql = `
+        SELECT *
+        FROM transactions
+        WHERE user_id = ?
+        ORDER BY transaction_date DESC
+    `;
+
+    db.query(sql, [userId], (err, results) => {
+        if (err) {
+            console.error(err);
+
+            return res.status(500).json({
+                message: "Failed to fetch transactions"
+            });
+        }
+
+        res.json(results);
+    });
+});
+
+
 module.exports = router;
