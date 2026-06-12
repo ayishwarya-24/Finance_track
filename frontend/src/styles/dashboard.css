@@ -1,8 +1,71 @@
+
 body {
     margin: 0;
     background: #0F172A;
     color: #F8FAFC;
     font-family: "Segoe UI", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    margin-top: 0;
+}
+
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0F172A;
+}
+
+.auth-card {
+    background: #1E293B;
+    width: 380px;
+    padding: 45px;
+    border-radius: 24px;
+    border: 1px solid #334155;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+}
+
+.auth-title {
+    text-align: center;
+    color: #3B82F6;
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: #94A3B8;
+    margin-bottom: 30px;
+}
+
+.auth-card input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+.auth-btn {
+    background: #3B82F6;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    display: block;
+    margin: 20px auto 0;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.auth-btn:hover {
+    opacity: 0.9;
 }
 
 .dashboard {
@@ -11,16 +74,15 @@ body {
     padding: 30px;
 }
 
-h1 {
+.dashboard h1 {
     font-size: 2.5rem;
     margin-bottom: 5px;
 }
 
-h2 {
+.dashboard h2 {
     color: #CBD5E1;
 }
 
-/* Summary Cards */
 
 .card-container {
     display: flex;
@@ -35,8 +97,9 @@ h2 {
     border-radius: 16px;
     min-width: 250px;
     flex: 1;
+    border: 1px solid #334155;
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    transition: transform 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .card:hover {
@@ -44,28 +107,78 @@ h2 {
 }
 
 .card h3 {
-    margin: 0;
     color: #94A3B8;
 }
 
 .card h2 {
-    margin-top: 15px;
     font-size: 2rem;
 }
 
 .income {
-    color: #10B981;
+    color: limegreen !important;
 }
 
 .expense {
-    color: #EF4444;
+    color: red !important;
 }
 
 .balance {
-    color: #3B82F6;
+    color: dodgerblue !important;
 }
 
-/* Table */
+
+input,
+select {
+    width: 250px;
+    padding: 12px;
+    background: #1E293B;
+    color: white;
+    border: 1px solid #475569;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #3B82F6;
+}
+
+
+button {
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.add-btn {
+    background: #10B981;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.add-btn:hover {
+    opacity: 0.9;
+}
+
+.edit-btn {
+    background: #3B82F6;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.delete-btn {
+    background: #EF4444;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+
 
 table {
     width: 100%;
@@ -95,52 +208,9 @@ tr:hover {
     background: #273549;
 }
 
-/* Buttons */
-
-button {
-    border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    color: white;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-/* Edit button */
-.edit-btn {
-    background: #3B82F6;
-    margin-right: 10px;
-}
-
-/* Delete button */
-.delete-btn {
-    background: #EF4444;
-}
-
-/* Form */
-
-input,
-select {
-    width: 250px;
-    padding: 10px;
-    margin-bottom: 10px;
-    background: #1E293B;
-    color: white;
-    border: 1px solid #475569;
-    border-radius: 8px;
-}
 
 hr {
     border: none;
     border-top: 1px solid #334155;
     margin: 30px 0;
-}
-
-.add-btn {
-    background: #10B981;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-weight: 600;
 }

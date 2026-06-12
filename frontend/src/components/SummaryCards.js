@@ -27,7 +27,6 @@ function SummaryCards({ transactions }) {
             </div>
         </div>
     );
-      
 }
 
 export default SummaryCards;

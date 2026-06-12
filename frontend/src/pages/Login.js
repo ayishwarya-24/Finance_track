@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
     const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -34,40 +35,56 @@ function Login() {
 
             localStorage.setItem("userId", data.userId);
             localStorage.setItem("username", data.username);
+
             navigate("/dashboard");
-            
+
         } catch (error) {
             console.error(error);
         }
     };
 
     return (
-        <div>
-            <h1>Login</h1>
+        <div className="auth-container">
+            <div className="auth-card">
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    onChange={handleChange}
-                />
+                <h1 className="auth-title">
+                    FinanceTrack
+                </h1>
 
-                <br /><br />
+                <p className="auth-subtitle">
+                    Sign in to your account
+                </p>
 
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    onChange={handleChange}
-                />
+                <form onSubmit={handleSubmit}>
 
-                <br /><br />
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                    />
 
-                <button type="submit">
-                    Login
-                </button>
-            </form>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
+                    />
+
+                    <button
+                        type="submit"
+                        className="auth-btn"
+                    >
+                        Login
+                    </button>
+
+                </form>
+
+            </div>
         </div>
     );
 }

@@ -32,47 +32,69 @@ function Register() {
             const data = await response.json();
 
             alert(data.message);
+
+            setFormData({
+                username: "",
+                email: "",
+                password: ""
+            });
+
         } catch (error) {
             console.error(error);
         }
     };
 
     return (
-        <div>
-            <h1>Register</h1>
+        <div className="auth-container">
+            <div className="auth-card">
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    onChange={handleChange}
-                />
+                <h1 className="auth-title">
+                    FinanceTrack
+                </h1>
 
-                <br /><br />
+                <p className="auth-subtitle">
+                    Create your account
+                </p>
 
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    onChange={handleChange}
-                />
+                <form onSubmit={handleSubmit}>
 
-                <br /><br />
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Username"
+                        value={formData.username}
+                        onChange={handleChange}
+                        required
+                    />
 
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    onChange={handleChange}
-                />
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                    />
 
-                <br /><br />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
+                    />
 
-                <button type="submit">
-                    Register
-                </button>
-            </form>
+                    <button
+                        type="submit"
+                        className="auth-btn"
+                    >
+                        Register
+                    </button>
+
+                </form>
+
+            </div>
         </div>
     );
 }
