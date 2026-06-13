@@ -214,3 +214,24 @@ hr {
     border-top: 1px solid #334155;
     margin: 30px 0;
 }
+
+.logout-btn {
+    background: #EF4444;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.logout-btn:hover {
+    opacity: 0.9;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}

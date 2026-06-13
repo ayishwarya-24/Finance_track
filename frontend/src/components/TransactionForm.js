@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function TransactionForm() {
+function TransactionForm({ onTransactionAdded }) {
     const [formData, setFormData] = useState({
         amount: "",
         type: "expense",
@@ -39,6 +39,8 @@ function TransactionForm() {
             const data = await response.json();
 
             alert(data.message);
+
+            onTransactionAdded();
 
             setFormData({
                 amount: "",
@@ -108,7 +110,7 @@ function TransactionForm() {
 
                 <br /><br />
 
-                <button 
+                <button
                     type="submit"
                     className="add-btn"
                 >

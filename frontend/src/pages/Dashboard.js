@@ -11,6 +11,22 @@ function Dashboard() {
 
     const [transactions, setTransactions] = useState([]);
 
+    const fetchTransactions = async () => {
+        const userId = localStorage.getItem("userId");
+
+        try {
+            const response = await fetch(
+                `http://localhost:5000/api/transactions/${userId}`
+            );
+
+            const data = await response.json();
+
+            setTransactions(data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     const handleDelete = async (id) => {
         try {
             await fetch(
@@ -31,6 +47,13 @@ function Dashboard() {
         }
     };
 
+    const handleLogout = () => {
+        localStorage.removeItem("userId");
+        localStorage.removeItem("username");
+        
+        window.location.href = "/login";
+    };
+
     const handleEdit = async (transaction) => {
         const newAmount = prompt(
             "Enter new amount",
@@ -47,7 +70,7 @@ function Dashboard() {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    
+
                     body: JSON.stringify({
                         amount: newAmount,
                         category: transaction.category,
@@ -60,11 +83,11 @@ function Dashboard() {
             setTransactions(prev =>
                 prev.map(t =>
                     t.id === transaction.id
-                      ? {
-                        ...t,
-                        amount: newAmount
+                        ? {
+                            ...t,
+                            amount: newAmount
                         }
-                      : t
+                        : t
                 )
             );
 
@@ -72,30 +95,23 @@ function Dashboard() {
             console.error(error);
         }
     };
-     
+
     useEffect(() => {
-        const fetchTransactions = async () => {
-            const userId = localStorage.getItem("userId");
-
-            try {
-                const response = await fetch(
-                    `http://localhost:5000/api/transactions/${userId}`
-                );
-
-                const data = await response.json();
-
-                setTransactions(data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
         fetchTransactions();
     }, []);
 
     return (
         <div className="dashboard">
-            <h1>FinanceTrack Dashboard</h1>
+            <div className="dashboard-header">
+                <h1>FinanceTrack Dashboard</h1>
+                
+                <button
+                    className="logout-btn"
+                    onClick={handleLogout}
+                >
+                    Logout
+                </button>
+            </div>
 
             <h2>Welcome, {username}</h2>
 
@@ -103,20 +119,21 @@ function Dashboard() {
 
             <hr />
 
-            <TransactionForm />
-
-            <hr />
-
-            <TransactionList 
-              transactions={transactions}
-              onDelete={handleDelete}
-              onEdit={handleEdit}
+            <TransactionForm
+                onTransactionAdded={fetchTransactions}
             />
 
             <hr />
-            
-            <FinanceCharts transactions={transactions} />
 
+            <TransactionList
+                transactions={transactions}
+                onDelete={handleDelete}
+                onEdit={handleEdit}
+            />
+
+            <hr />
+
+            <FinanceCharts transactions={transactions} />
         </div>
     );
 }
