@@ -5,6 +5,7 @@ import TransactionList from "../components/TransactionList";
 import SummaryCards from "../components/SummaryCards";
 import FinanceCharts from "../components/FinanceCharts";
 import "../styles/dashboard.css";
+import BudgetGoal from "../components/BudgetGoal";
 
 function Dashboard() {
     const username = localStorage.getItem("username");
@@ -116,6 +117,8 @@ function Dashboard() {
             <h2>Welcome, {username}</h2>
 
             <SummaryCards transactions={transactions} />
+
+            <BudgetGoal transactions={transactions} />
 
             <hr />
 

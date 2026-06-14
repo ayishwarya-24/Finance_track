@@ -17,7 +17,10 @@ function TransactionList({ transactions, onDelete, onEdit }) {
                 <tbody>
                     {transactions.map((transaction) => (
                         <tr key={transaction.id}>
-                            <td>{transaction.transaction_date}</td>
+                            <td>
+                                {transaction.transaction_date
+                                  ?.split("T")[0]}
+                            </td>
                             <td>{transaction.category}</td>
                             <td>{transaction.type}</td>
                             <td>{transaction.amount}</td>

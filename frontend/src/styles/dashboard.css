@@ -235,3 +235,52 @@ hr {
     align-items: center;
     margin-bottom: 15px;
 }
+
+
+.budget-card {
+    background: #1E293B;
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    border: 1px solid #334155;
+}
+
+.budget-card input {
+    width: 180px;
+    margin-top: 10px;
+}
+
+.budget-section {
+    background: #1E293B;
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid #334155;
+    margin: 30px 0;
+}
+
+.budget-grid {
+    display: flex;
+    gap: 40px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.budget-grid div {
+    min-width: 180px;
+}
+
+.budget-grid span {
+    color: #94A3B8;
+    font-size: 14px;
+}
+
+.budget-grid h3 {
+    margin-top: 8px;
+    font-size: 1.8rem;
+}
+
+.budget-number {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
