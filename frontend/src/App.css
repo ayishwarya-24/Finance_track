@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.home-login {
+    background: #3B82F6;
+}
+
+.home-register {
+    background: #10B981;
+}
