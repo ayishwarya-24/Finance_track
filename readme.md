@@ -27,10 +27,16 @@ FinanceTrack is a full-stack personal finance management application that allows
 
 # Installation
 ## Frontend
+```bash
 cd frontend
 npm install
 npm start
+```
 ## Backend
+```bash
 cd backend
 npm install
 node server.js
+```
+
+
